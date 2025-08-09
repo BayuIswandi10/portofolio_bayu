@@ -468,7 +468,7 @@
       }
 
       .timeline-item li {
-        color: var(--text-secondary);
+        color: var(--text-primary);
         line-height: 1.6;
         margin-bottom: 0.5rem;
         list-style-type: disc;
@@ -552,7 +552,7 @@
       }
 
       .project-content p {
-        color: var(--text-secondary);
+        color: var(--text-primary);
         margin-bottom: 1rem;
       }
 
@@ -591,7 +591,7 @@
       }
 
       .contact-item::before {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         left: -100%;
@@ -634,7 +634,7 @@
       }
 
       .contact-item p {
-        color: var(--text-secondary);
+        color: var(--text-primary);
         font-size: 0.95rem;
         line-height: 1.5;
         text-align: center;
@@ -656,7 +656,7 @@
       }
 
       .footer-content p {
-        color: var(--text-secondary);
+        color: var(--text-primary);
         margin-bottom: 1rem;
       }
 
@@ -728,7 +728,8 @@
           flex-direction: column;
         }
 
-        .about-text, .skills-grid {
+        .about-text,
+        .skills-grid {
           flex: 1 1 100%;
         }
 
@@ -881,10 +882,7 @@
     <section id="home">
       <div class="hero-content">
         <div class="profile-image">
-          <img
-            src="img/foto_bayu_SIA.jpg"
-            alt="Profile Photo"
-          />
+          <img src="img/foto_bayu_SIA.jpg" alt="Profile Photo" />
         </div>
         <div class="hero-text">
           <h1 class="name">BAYU ISWANDI</h1>
@@ -898,18 +896,18 @@
     <!-- ABOUT SECTION -->
     <section id="about">
       <h2 class="section-title">About Me</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
-        Dedicated to crafting exceptional digital experiences
-      </p>
+      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">Dedicated to crafting exceptional digital experiences</p>
       <div class="about-card">
         <div class="about-content">
           <div class="about-text">
             <h3>Hello, I'm Bayu!</h3>
             <p>
-              I specialize in breaking down complex problems and crafting solutions that truly align with user and client needs. With hands-on experience in fast-paced, industry-driven environments, I've sharpened my analytical thinking and can develop responsive, intuitive web applications that simply work.
+              I specialize in breaking down complex problems and crafting solutions that truly align with user and client needs. With hands-on experience in fast-paced, industry-driven environments, I've sharpened my analytical thinking and
+              can develop responsive, intuitive web applications that simply work.
             </p>
             <p>
-              I thrive on uncovering what clients really need—not just what they ask for—while staying in tune with current trends and technologies. I enjoy refining every detail until a solution feels just right. Along the way, I continuously improve my communication and collaboration skills, effectively bridging the gap between technical discussions and real-world needs to bring ideas to life.
+              I thrive on uncovering what clients really need—not just what they ask for—while staying in tune with current trends and technologies. I enjoy refining every detail until a solution feels just right. Along the way, I
+              continuously improve my communication and collaboration skills, effectively bridging the gap between technical discussions and real-world needs to bring ideas to life.
             </p>
           </div>
 
@@ -951,9 +949,7 @@
     <!-- EXPERIENCE SECTION -->
     <section id="experience">
       <h2 class="section-title">Experience & Education</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
-        My professional journey and educational background
-      </p>
+      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">My professional journey and educational background</p>
       <div class="tab-container">
         <button class="tab-button active" onclick="showTab('experience-content')">Experience</button>
         <button class="tab-button" onclick="showTab('education-content')">Education</button>
@@ -979,9 +975,18 @@
           <div class="date">May 2024 - Nov 2024</div>
           <p><strong>PT. Astra Honda Motor</strong></p>
           <ul>
-            <li>Application migrated to Java Spring Boot. Web-based DO reporting accelerates delivery data access, integrates validation by type, color, dealer, ensures query response under 3 seconds, enhances stock visibility, eliminates manual forms entirely.</li>
-            <li>Migrated the Material Requirement Planning (MRP) application for raw material coil to Java Spring Boot. The MRP process calculates material requirements based on unit demand from the current month's Master Production Schedule (MPS) and non-unit demand derived from REM and OEM MRP results. This migration improved system stability, enhanced data integration, and accelerated the execution of material calculation processes.</li>
-            <li>Migrated the booking application to Java Spring. The system displays, validates, and prints complete booking data—including DO number, memo type, and unit details—into an A5-format PDF. The migration also optimized integration with warehouse and vendor master data.</li>
+            <li>
+              Application migrated to Java Spring Boot. Web-based DO reporting accelerates delivery data access, integrates validation by type, color, dealer, ensures query response under 3 seconds, enhances stock visibility, eliminates
+              manual forms entirely.
+            </li>
+            <li>
+              Migrated the Material Requirement Planning (MRP) application for raw material coil to Java Spring Boot. The MRP process calculates material requirements based on unit demand from the current month's Master Production Schedule
+              (MPS) and non-unit demand derived from REM and OEM MRP results. This migration improved system stability, enhanced data integration, and accelerated the execution of material calculation processes.
+            </li>
+            <li>
+              Migrated the booking application to Java Spring. The system displays, validates, and prints complete booking data—including DO number, memo type, and unit details—into an A5-format PDF. The migration also optimized integration
+              with warehouse and vendor master data.
+            </li>
           </ul>
           <div class="d-flex flex-wrap gap-2">
             <span class="badge-tech-alt">Spring Boot</span>
@@ -1010,16 +1015,11 @@
     <!-- PROJECTS SECTION -->
     <section id="projects">
       <h2 class="section-title">Featured Projects</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
-        Some of my recent work and achievements
-      </p>
+      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">Some of my recent work and achievements</p>
       <div class="projects-grid">
         <div class="project-card">
           <div class="project-image">
-            <img
-              src="img/peminjaman_ruangan_dan_barang.png"
-              alt="Room & Equipment Borrowing System"
-            />
+            <img src="img/peminjaman_ruangan_dan_barang.png" alt="Room & Equipment Borrowing System" />
           </div>
           <div class="project-content">
             <h3>Room & Equipment Borrowing System</h3>
@@ -1029,16 +1029,13 @@
               <span class="badge-tech-alt">PHP</span>
               <span class="badge-tech-alt">MySQL</span>
             </div>
-            <a href="https://github.com/BayuIswandi10/SistemPeminjaman.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>          
+            <a href="https://github.com/BayuIswandi10/SistemPeminjaman.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>
           </div>
         </div>
-        
+
         <div class="project-card">
           <div class="project-image">
-            <img
-              src="img/Picture1.png"
-              alt="MI Savings App"
-            />
+            <img src="img/Picture1.png" alt="MI Savings App" />
           </div>
           <div class="project-content">
             <h3>MI Savings</h3>
@@ -1052,13 +1049,10 @@
             <a href="https://github.com/BayuIswandi10/PROJECT_MISAVINGS.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>
           </div>
         </div>
-        
+
         <div class="project-card">
           <div class="project-image">
-            <img
-              src="img/Picture2.png"
-              alt="Vehicle Management System"
-            />
+            <img src="img/Picture2.png" alt="Vehicle Management System" />
           </div>
           <div class="project-content">
             <h3>Vehicle Management System</h3>
@@ -1069,7 +1063,7 @@
               <span class="badge-tech-alt">Livewire</span>
               <span class="badge-tech-alt">MySQL</span>
             </div>
-            <a href="https://github.com/BayuIswandi10/SistemPengeluaranBarang-jetsream.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>         
+            <a href="https://github.com/BayuIswandi10/SistemPengeluaranBarang-jetsream.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>
           </div>
         </div>
       </div>
@@ -1081,13 +1075,9 @@
     <!-- CONTACT SECTION -->
     <section id="contact">
       <h2 class="section-title">Contact Me</h2>
-      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 0.5rem">
-        Let's connect and discuss opportunities to work together!
-      </p>
-      <p style="text-align: center; font-size: 1rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
-        📌 Click any box below to reach me directly
-      </p>
-      
+      <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 0.5rem">Let's connect and discuss opportunities to work together!</p>
+      <p style="text-align: center; font-size: 1rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">📌 Click any box below to reach me directly</p>
+
       <div class="contact-links">
         <a href="https://github.com/BayuIswandi10" class="contact-item" target="_blank" rel="noopener noreferrer">
           <div class="contact-icon">
@@ -1137,13 +1127,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const monthNames = [
-          "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-          "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ];
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         const now = new Date();
-        document.getElementById("monthYear").textContent =
-          `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
+        document.getElementById("monthYear").textContent = `${monthNames[now.getMonth()]} ${now.getFullYear()}`;
       });
 
       // Theme Toggle
@@ -1168,7 +1154,7 @@
 
         navLinks.classList.toggle("active");
         mobileMenu.classList.toggle("active");
-        
+
         // Prevent body scroll when menu is open
         if (navLinks.classList.contains("active")) {
           body.classList.add("menu-open");
@@ -1189,18 +1175,18 @@
       }
 
       // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
+      document.addEventListener("click", function (event) {
         const navLinks = document.getElementById("navLinks");
         const mobileMenu = document.getElementById("mobileMenu");
         const navContainer = document.querySelector(".nav-container");
-        
+
         if (navLinks.classList.contains("active") && !navContainer.contains(event.target)) {
           closeMenu();
         }
       });
 
       // Close menu on window resize to desktop size
-      window.addEventListener('resize', function() {
+      window.addEventListener("resize", function () {
         if (window.innerWidth > 768) {
           closeMenu();
         }
