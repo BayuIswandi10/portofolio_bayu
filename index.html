@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- Favicon -->
+    <!-- Favicon -->
     <link rel="icon" href="img/logo.png" />
     <title>MY PORTFOLIO | BAYU ISWANDI</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -45,7 +46,7 @@
         transition: all 0.3s ease;
       }
 
-      /* Navigation - ONLY nav should float */
+      /* Navigation - IMPROVED RESPONSIVE */
       nav {
         position: fixed;
         top: 0;
@@ -68,6 +69,7 @@
         align-items: center;
         max-width: 1200px;
         margin: 0 auto;
+        position: relative;
       }
 
       .logo {
@@ -77,12 +79,16 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        z-index: 1001;
       }
 
       .nav-links {
         display: flex;
         list-style: none;
         gap: 2rem;
+        margin: 0;
+        padding: 0;
+        transition: all 0.3s ease;
       }
 
       .nav-links a {
@@ -90,9 +96,11 @@
         text-decoration: none;
         transition: color 0.3s ease;
         position: relative;
+        padding: 0.5rem 0;
       }
 
-      .nav-links a:hover {
+      .nav-links a:hover,
+      .nav-links a.active {
         color: var(--accent);
       }
 
@@ -107,8 +115,16 @@
         transition: width 0.3s ease;
       }
 
-      .nav-links a:hover::after {
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
         width: 100%;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        z-index: 1001;
       }
 
       .theme-toggle {
@@ -122,28 +138,6 @@
         font-size: 1rem;
       }
 
-      /* Mobile view - pastikan tombol tetap rapi */
-      @media (max-width: 768px) {
-        .nav-right {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem; /* beri jarak antara theme button dan hamburger */
-        }
-
-        .theme-toggle {
-          padding: 0.4rem 0.8rem;
-          font-size: 0.9rem; /* sedikit lebih kecil */
-        }
-      }
-
-      /* Lebih kecil lagi - HP */
-      @media (max-width: 480px) {
-        .theme-toggle {
-          padding: 0.3rem 0.6rem;
-          font-size: 0.85rem;
-        }
-      }
-
       .theme-toggle:hover {
         background: var(--accent);
         color: var(--bg-primary);
@@ -154,6 +148,8 @@
         display: none;
         flex-direction: column;
         cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1002;
       }
 
       .mobile-menu span {
@@ -161,17 +157,95 @@
         height: 3px;
         background: var(--text-primary);
         margin: 2px 0;
-        transition: 0.3s;
+        transition: all 0.3s ease;
+        transform-origin: center;
       }
 
-      /* Sections - Remove any positioning that makes them float */
+      .mobile-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .mobile-menu.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      /* Mobile Navigation Styles */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 10, 10, 0.98);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 3rem;
+          transform: translateX(-100%);
+          opacity: 0;
+          visibility: hidden;
+          transition: all 0.3s ease;
+        }
+
+        [data-theme="light"] .nav-links {
+          background: rgba(248, 249, 255, 0.98);
+        }
+
+        .nav-links.active {
+          transform: translateX(0);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-links a {
+          font-size: 1.5rem;
+          padding: 1rem 2rem;
+          border-radius: 10px;
+          transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+          background: var(--glass);
+          transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+          display: flex;
+        }
+
+        .theme-toggle {
+          padding: 0.4rem 0.8rem;
+          font-size: 0.9rem;
+        }
+
+        .nav-container {
+          padding: 0;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .theme-toggle {
+          padding: 0.3rem 0.6rem;
+          font-size: 0.85rem;
+        }
+
+        nav {
+          padding: 0.8rem 5%;
+        }
+      }
+
+      /* Sections */
       section {
         min-height: 100vh;
         padding: 100px 5% 50px;
         max-width: 1200px;
         margin: 0 auto;
-        /* Removed any position: relative/absolute/fixed */
-        /* All sections flow naturally in document order */
       }
 
       .section-title {
@@ -184,13 +258,12 @@
         text-align: center;
       }
 
-      /* Home Section - Removed any special positioning */
+      /* Home Section */
       #home {
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        /* Removed position: relative - let it flow naturally */
       }
 
       .hero-content {
@@ -255,6 +328,7 @@
 
       .cta-button:hover {
         transform: translateY(-5px);
+        color: white;
       }
 
       /* About Section */
@@ -303,20 +377,6 @@
         margin-bottom: 0.5rem;
       }
 
-      @media (max-width: 768px) {
-        .about-content {
-          flex-direction: row; /* tetap sejajar */
-          flex-wrap: wrap;
-        }
-        .about-text, .skills-grid {
-          flex: 1 1 100%;
-        }
-        .skills-grid {
-          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        }
-      }
-
-
       /* Experience & Education Section */
       #experience {
         background: var(--bg-secondary);
@@ -327,6 +387,7 @@
         justify-content: center;
         margin-bottom: 3rem;
         gap: 1rem;
+        flex-wrap: wrap;
       }
 
       .tab-button {
@@ -400,48 +461,54 @@
       .timeline-item p strong {
         color: var(--text-primary);
       }
+
       .timeline-item ul {
-          margin: 1rem 0;
-          padding-left: 1.5rem;
+        margin: 1rem 0;
+        padding-left: 1.5rem;
       }
 
       .timeline-item li {
-          color: var(--text-secondary);
-          line-height: 1.6;
-          margin-bottom: 0.5rem;
-          list-style-type: disc;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+        list-style-type: disc;
       }
 
       .timeline-item li::marker {
-          color: var(--accent);
+        color: var(--accent);
       }
+
       .badge-tech-alt {
-          background: var(--glass);
-          color: var(--accent);
-          border: 1px solid var(--border);
-          backdrop-filter: blur(10px);
+        background: var(--glass);
+        color: var(--accent);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        margin: 0.2rem;
+        padding: 0.3rem 0.8rem;
+        font-size: 0.85rem;
+        border-radius: 15px;
+        display: inline-block;
       }
 
       .badge-tech-alt:hover {
-          background: var(--accent);
-          color: white;
-          border-color: var(--accent);
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
       }
 
       /* Projects Section */
       #projects {
-        max-width: 1400px; /* sebelumnya 1200px di section */
+        max-width: 1400px;
       }
 
       .projects-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
         gap: 2rem;
         margin-top: 3rem;
       }
 
       .project-card {
-        max-width: 100%;
         background: var(--glass);
         border: 1px solid var(--border);
         border-radius: 20px;
@@ -475,7 +542,7 @@
       }
 
       .project-content {
-        padding: 2.5rem;
+        padding: 2rem;
       }
 
       .project-content h3 {
@@ -489,135 +556,90 @@
         margin-bottom: 1rem;
       }
 
-      .project-tech {
-        font-weight: bold;
-        color: var(--text-primary);
-      }
-
       /* Contact Section */
-      /* Contact Section - 2x2 Grid Layout */
       #contact {
-          text-align: center;
-          background: var(--bg-primary);
+        text-align: center;
+        background: var(--bg-primary);
       }
 
       .contact-links {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          grid-template-rows: repeat(2, 1fr);
-          gap: 2rem;
-          margin-top: 3rem;
-          max-width: 800px;
-          margin-left: auto;
-          margin-right: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .contact-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-decoration: none;
-          color: var(--text-primary);
-          transition: all 0.3s ease;
-          background: var(--glass);
-          padding: 2.5rem 2rem;
-          border-radius: 20px;
-          border: 1px solid var(--border);
-          backdrop-filter: blur(10px);
-          position: relative;
-          overflow: hidden;
-          min-height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+        background: var(--glass);
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        min-height: 200px;
       }
 
       .contact-item::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
-          transition: left 0.5s ease;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+        transition: left 0.5s ease;
       }
 
       .contact-item:hover::before {
-          left: 100%;
+        left: 100%;
       }
 
       .contact-item:hover {
-          transform: translateY(-10px);
-          color: var(--accent);
-          border-color: var(--accent);
-          box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        transform: translateY(-10px);
+        color: var(--accent);
+        border-color: var(--accent);
+        box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        text-decoration: none;
       }
 
       .contact-icon {
-          font-size: 3rem;
-          margin-bottom: 1.5rem;
-          background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          position: relative;
-          z-index: 1;
-      }
-
-      .contact-icon i {
-          display: block;
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--accent), var(--accent-secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        z-index: 1;
       }
 
       .contact-item h3 {
-          margin-bottom: 0.8rem;
-          color: var(--accent);
-          font-size: 1.4rem;
-          font-weight: 600;
-          position: relative;
-          z-index: 1;
+        margin-bottom: 0.8rem;
+        color: var(--accent);
+        font-size: 1.4rem;
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
       }
 
       .contact-item p {
-          color: var(--text-secondary);
-          font-size: 0.95rem;
-          line-height: 1.5;
-          text-align: center;
-          position: relative;
-          z-index: 1;
-      }
-
-      /* Mobile Responsive */
-      @media (max-width: 768px) {
-          .contact-links {
-              grid-template-columns: 1fr;
-              grid-template-rows: auto;
-              gap: 1.5rem;
-              max-width: 400px;
-          }
-          
-          .contact-item {
-              min-height: 180px;
-              padding: 2rem 1.5rem;
-          }
-      }
-
-      @media (max-width: 480px) {
-          .contact-item {
-              min-height: 160px;
-              padding: 1.8rem 1.2rem;
-          }
-          
-          .contact-icon {
-              font-size: 2.5rem;
-              margin-bottom: 1rem;
-          }
-          
-          .contact-item h3 {
-              font-size: 1.2rem;
-          }
-          
-          .contact-item p {
-              font-size: 0.9rem;
-          }
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        text-align: center;
+        position: relative;
+        z-index: 1;
       }
 
       /* Footer */
@@ -690,14 +712,6 @@
 
       /* Responsive Design */
       @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .mobile-menu {
-          display: flex;
-        }
-
         .hero-text h1 {
           font-size: 2.5rem;
         }
@@ -710,19 +724,16 @@
           font-size: 2.5rem;
         }
 
-        .about-content-new {
-          grid-template-columns: 1fr;
-          gap: 3rem;
+        .about-content {
+          flex-direction: column;
         }
 
-        .about-text-new h3 {
-          font-size: 2rem;
-          text-align: center;
+        .about-text, .skills-grid {
+          flex: 1 1 100%;
         }
 
-        .skills-grid-new {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
+        .skills-grid {
+          grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         }
 
         .profile-image {
@@ -735,21 +746,27 @@
         }
 
         .contact-links {
-          gap: 1rem;
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          max-width: 400px;
         }
 
         .contact-item {
-          min-width: 150px;
-          padding: 1.5rem;
+          min-height: 180px;
+          padding: 2rem 1.5rem;
         }
 
         section {
           padding: 80px 5% 30px;
         }
 
-        .footer-links {
+        .tab-container {
           flex-direction: column;
-          gap: 1rem;
+          align-items: center;
+        }
+
+        .tab-button {
+          min-width: 200px;
         }
       }
 
@@ -763,39 +780,11 @@
         }
 
         .hero-text p {
-          font-size: 1.2rem;
+          font-size: 1.1rem;
         }
 
         .section-title {
           font-size: 2rem;
-        }
-
-        .about-text-new h3 {
-          font-size: 1.8rem;
-        }
-
-        .about-text-new p {
-          font-size: 1rem;
-        }
-
-        .skills-grid-new {
-          gap: 1rem;
-        }
-
-        .skill-category {
-          padding: 1.5rem 1rem;
-        }
-
-        .skill-icon {
-          font-size: 2.5rem;
-        }
-
-        .skill-category h4 {
-          font-size: 1.1rem;
-        }
-
-        .skill-category p {
-          font-size: 0.9rem;
         }
 
         .profile-image {
@@ -804,20 +793,33 @@
         }
 
         .contact-item {
-          min-width: 120px;
-          padding: 1rem;
+          min-height: 160px;
+          padding: 1.8rem 1.2rem;
         }
 
         .contact-icon {
-          font-size: 2rem;
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
         }
 
-        nav {
-          padding: 0.5rem 5%;
+        .contact-item h3 {
+          font-size: 1.2rem;
+        }
+
+        .contact-item p {
+          font-size: 0.9rem;
         }
 
         section {
           padding: 70px 3% 20px;
+        }
+
+        .timeline-item {
+          padding: 1.5rem;
+        }
+
+        .project-content {
+          padding: 1.5rem;
         }
       }
 
@@ -846,23 +848,27 @@
         opacity: 1;
         transform: translateY(0);
       }
+
+      /* Overlay to prevent body scroll when mobile menu is open */
+      body.menu-open {
+        overflow: hidden;
+      }
     </style>
   </head>
   <body data-theme="dark">
-    <!-- ONLY NAVIGATION FLOATS -->
     <nav>
       <div class="nav-container">
         <div class="logo">Bayu.</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" onclick="closeMenu()">Home</a></li>
+          <li><a href="#about" onclick="closeMenu()">About</a></li>
+          <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+          <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+          <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
         </ul>
         <div class="nav-right">
           <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-          <div class="mobile-menu" onclick="toggleMobileMenu()">
+          <div class="mobile-menu" id="mobileMenu" onclick="toggleMobileMenu()">
             <span></span>
             <span></span>
             <span></span>
@@ -871,8 +877,7 @@
       </div>
     </nav>
 
-    <!-- ALL SECTIONS FLOW IN NATURAL ORDER -->
-    <!-- HOME SECTION FIRST -->
+    <!-- HOME SECTION -->
     <section id="home">
       <div class="hero-content">
         <div class="profile-image">
@@ -885,12 +890,12 @@
           <h1 class="name">BAYU ISWANDI</h1>
           <p>Passionate Web Developer & Software Engineer</p>
           <p>Bringing ideas to life with well-written code and thoughtful digital design</p>
-          <a href="doc/CV_BAYU ISWANDI_V2.pdf" class="cta-button" download="Resume_Bayu_Iswandi.pdf">Get My Resume</a>
+          <a href="doc/CV_BAYU ISWANDI_V2.pdf" class="cta-button" download="Resume_Bayu_Iswandi.pdf" target="_blank" rel="noopener noreferrer">Get My Resume</a>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT & SKILLS WRAPPER -->
+    <!-- ABOUT SECTION -->
     <section id="about">
       <h2 class="section-title">About Me</h2>
       <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
@@ -898,7 +903,6 @@
       </p>
       <div class="about-card">
         <div class="about-content">
-          <!-- ABOUT TEXT -->
           <div class="about-text">
             <h3>Hello, I'm Bayu!</h3>
             <p>
@@ -909,7 +913,6 @@
             </p>
           </div>
 
-          <!-- SKILLS -->
           <div class="skills-grid">
             <div class="skill-category">
               <div class="skill-icon"><i class="bi bi-terminal"></i></div>
@@ -945,7 +948,7 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE & EDUCATION SECTION AFTER ABOUT -->
+    <!-- EXPERIENCE SECTION -->
     <section id="experience">
       <h2 class="section-title">Experience & Education</h2>
       <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
@@ -956,7 +959,6 @@
         <button class="tab-button" onclick="showTab('education-content')">Education</button>
       </div>
 
-      <!-- Experience Tab Content -->
       <div id="experience-content" class="tab-content active">
         <div class="timeline-item">
           <h3>Application Developer Intern</h3>
@@ -966,9 +968,9 @@
             <li>The digitalization of goods issuance and official vehicle management systems using Laravel and MySQL improved approval structure, reduced monitoring time to 58.67 seconds, and decreased paper usage by 63% per month.</li>
           </ul>
           <div class="d-flex flex-wrap gap-2">
-            <span class="badge badge-tech-alt">Laravel</span>
-            <span class="badge badge-tech-alt">PHP</span>
-            <span class="badge badge-tech-alt">MySQL</span>
+            <span class="badge-tech-alt">Laravel</span>
+            <span class="badge-tech-alt">PHP</span>
+            <span class="badge-tech-alt">MySQL</span>
           </div>
         </div>
 
@@ -980,32 +982,32 @@
             <li>Application migrated to Java Spring Boot. Web-based DO reporting accelerates delivery data access, integrates validation by type, color, dealer, ensures query response under 3 seconds, enhances stock visibility, eliminates manual forms entirely.</li>
             <li>Migrated the Material Requirement Planning (MRP) application for raw material coil to Java Spring Boot. The MRP process calculates material requirements based on unit demand from the current month's Master Production Schedule (MPS) and non-unit demand derived from REM and OEM MRP results. This migration improved system stability, enhanced data integration, and accelerated the execution of material calculation processes.</li>
             <li>Migrated the booking application to Java Spring. The system displays, validates, and prints complete booking data—including DO number, memo type, and unit details—into an A5-format PDF. The migration also optimized integration with warehouse and vendor master data.</li>
-            <div class="d-flex flex-wrap gap-2">
-              <span class="badge badge-tech-alt">Spring Boot</span>
-              <span class="badge badge-tech-alt">Java</span>
-              <span class="badge badge-tech-alt">Oracle</span>
-              <span class="badge badge-tech-alt">Jasper Reports</span>
-            </div>
+          </ul>
+          <div class="d-flex flex-wrap gap-2">
+            <span class="badge-tech-alt">Spring Boot</span>
+            <span class="badge-tech-alt">Java</span>
+            <span class="badge-tech-alt">Oracle</span>
+            <span class="badge-tech-alt">Jasper Reports</span>
+          </div>
         </div>
       </div>
 
-      <!-- Education Tab Content -->
       <div id="education-content" class="tab-content">
         <div class="timeline-item">
           <h3>Associate Degree (D3) in Information Management</h3>
           <div class="date">2022 - 2025</div>
           <p><strong>Astra Polytechnic</strong></p>
           <ul>
-            <li>Educated in an industry-driven environment tailored to Astra Group’s professional standards and practical demands.</li>
+            <li>Educated in an industry-driven environment tailored to Astra Group's professional standards and practical demands.</li>
           </ul>
           <div class="d-flex flex-wrap gap-2">
-            <span class="badge badge-tech-alt">GPA: 3.28/4.00</span>
+            <span class="badge-tech-alt">GPA: 3.28/4.00</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS SECTION AFTER EXPERIENCE -->
+    <!-- PROJECTS SECTION -->
     <section id="projects">
       <h2 class="section-title">Featured Projects</h2>
       <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 2rem">
@@ -1016,57 +1018,59 @@
           <div class="project-image">
             <img
               src="img/peminjaman_ruangan_dan_barang.png"
-              alt="E-Commerce Platform"
+              alt="Room & Equipment Borrowing System"
             />
           </div>
           <div class="project-content">
             <h3>Room & Equipment Borrowing System</h3>
             <p>A web-based application for managing room and equipment borrowing</p>
             <div class="mb-3">
-              <span class="badge badge-tech-alt">Laravel</span>
-              <span class="badge badge-tech-alt">PHP</span>
-              <span class="badge badge-tech-alt">MySQL</span>
+              <span class="badge-tech-alt">Laravel</span>
+              <span class="badge-tech-alt">PHP</span>
+              <span class="badge-tech-alt">MySQL</span>
             </div>
             <a href="https://github.com/BayuIswandi10/SistemPeminjaman.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>          
           </div>
         </div>
+        
         <div class="project-card">
           <div class="project-image">
             <img
               src="img/Picture1.png"
-              alt="AI Chat Application"
+              alt="MI Savings App"
             />
           </div>
           <div class="project-content">
             <h3>MI Savings</h3>
             <p>A mobile personal finance app for tracking income, expenses, goals, and generating monthly reports. Developed as a final project to promote financial literacy.</p>
             <div class="mb-3">
-              <span class="badge badge-tech-alt">Java</span>
-              <span class="badge badge-tech-alt">Android</span>
-              <span class="badge badge-tech-alt">SQL Server</span>
-              <span class="badge badge-tech-alt">XML UI</span>
+              <span class="badge-tech-alt">Java</span>
+              <span class="badge-tech-alt">Android</span>
+              <span class="badge-tech-alt">SQL Server</span>
+              <span class="badge-tech-alt">XML UI</span>
             </div>
             <a href="https://github.com/BayuIswandi10/PROJECT_MISAVINGS.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>
           </div>
         </div>
+        
         <div class="project-card">
           <div class="project-image">
             <img
               src="img/Picture2.png"
-              alt="Task Management System"
+              alt="Vehicle Management System"
             />
           </div>
           <div class="project-content">
             <h3>Vehicle Management System</h3>
             <p>Digital transformation project for vehicle and goods management.</p>
             <div class="mb-3">
-              <span class="badge badge-tech-alt">Laravel</span>
-              <span class="badge badge-tech-alt">PHP</span>
-              <span class="badge badge-tech-alt">Livewire</span>
-              <span class="badge badge-tech-alt">MySQL</span>
+              <span class="badge-tech-alt">Laravel</span>
+              <span class="badge-tech-alt">PHP</span>
+              <span class="badge-tech-alt">Livewire</span>
+              <span class="badge-tech-alt">MySQL</span>
             </div>
             <a href="https://github.com/BayuIswandi10/SistemPengeluaranBarang-jetsream.git" class="btn btn-primary" target="_blank" rel="noopener noreferrer">View Project</a>         
-         </div>
+          </div>
         </div>
       </div>
       <div class="text-center mt-4">
@@ -1074,7 +1078,7 @@
       </div>
     </section>
 
-    <!-- CONTACT SECTION AFTER PROJECTS -->
+    <!-- CONTACT SECTION -->
     <section id="contact">
       <h2 class="section-title">Contact Me</h2>
       <p style="text-align: center; font-size: 1.2rem; color: var(--accent); font-weight: bold; margin-bottom: 0.5rem">
@@ -1116,8 +1120,7 @@
       </div>
     </section>
 
-
-    <!-- FOOTER AT THE END -->
+    <!-- FOOTER -->
     <footer>
       <div class="footer-content">
         <div class="footer-links">
@@ -1134,8 +1137,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-    <script>
+
       // Theme Toggle
       function toggleTheme() {
         const body = document.body;
@@ -1144,34 +1146,67 @@
         if (body.getAttribute("data-theme") === "dark") {
           body.setAttribute("data-theme", "light");
           themeToggle.textContent = "☀️";
-          // Note: localStorage removed as per artifact restrictions
         } else {
           body.setAttribute("data-theme", "dark");
           themeToggle.textContent = "🌙";
-          // Note: localStorage removed as per artifact restrictions
         }
       }
 
-      // Mobile Menu Toggle
+      // Mobile Menu Toggle - IMPROVED
       function toggleMobileMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.style.display = navLinks.style.display === "flex" ? "none" : "flex";
+        const navLinks = document.getElementById("navLinks");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const body = document.body;
+
+        navLinks.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        
+        // Prevent body scroll when menu is open
+        if (navLinks.classList.contains("active")) {
+          body.classList.add("menu-open");
+        } else {
+          body.classList.remove("menu-open");
+        }
       }
+
+      // Close menu function
+      function closeMenu() {
+        const navLinks = document.getElementById("navLinks");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const body = document.body;
+
+        navLinks.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        body.classList.remove("menu-open");
+      }
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const navLinks = document.getElementById("navLinks");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const navContainer = document.querySelector(".nav-container");
+        
+        if (navLinks.classList.contains("active") && !navContainer.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close menu on window resize to desktop size
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          closeMenu();
+        }
+      });
 
       // Tab Switching
       function showTab(tabId) {
-        // Hide all tab contents
         const tabContents = document.querySelectorAll(".tab-content");
         tabContents.forEach((tab) => tab.classList.remove("active"));
 
-        // Remove active class from all buttons
         const tabButtons = document.querySelectorAll(".tab-button");
         tabButtons.forEach((button) => button.classList.remove("active"));
 
-        // Show selected tab
         document.getElementById(tabId).classList.add("active");
-
-        // Add active class to clicked button
         event.target.classList.add("active");
       }
 
@@ -1205,14 +1240,12 @@
 
       // Initialize
       document.addEventListener("DOMContentLoaded", function () {
-        // Observe elements for animation
         const animatedElements = document.querySelectorAll("section, .skill-category, .project-card, .contact-item");
         animatedElements.forEach((element) => {
           element.classList.add("loading");
           observer.observe(element);
         });
 
-        // Add loading animation to cards
         const cards = document.querySelectorAll(".skill-category, .project-card, .contact-item");
         cards.forEach((card, index) => {
           card.style.animationDelay = `${index * 0.1}s`;
